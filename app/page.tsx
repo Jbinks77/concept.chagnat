@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 type CaseItem = {
@@ -13,41 +14,37 @@ const cases: CaseItem[] = [
 ];
 
 const process = ['Deep teardown', 'Visual repositioning', 'Conversion rebuild', 'Polish + launch'];
-
 const portfolio = ['Attorney landing', 'Dental clinic', 'Real estate', 'Luxury interiors', 'SaaS homepage', 'Private medical'];
 
-function BrowserFrame({ before = false }: { before?: boolean }) {
+function HeroComparison() {
   return (
-    <div className={`mock-window ${before ? 'bg-[#1d1a18]' : 'bg-[#121117]'}`}>
-      <div className="mb-3 flex items-center gap-2 px-1">
-        <span className="h-2.5 w-2.5 rounded-full bg-white/35" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-        <span className="h-2.5 w-2.5 rounded-full bg-white/12" />
-        <div className="ml-3 h-6 flex-1 rounded-full bg-white/8" />
+    <div className="hero-compare-card panel mx-auto w-full max-w-[1200px] p-3 md:p-4">
+      <div className="md:hidden space-y-3">
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
+          <Image src="/old_electric.png" alt="Before redesign: outdated electrician website" fill className="object-cover" priority />
+          <span className="absolute left-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/90">Before</span>
+        </div>
+        <div className="relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
+          <Image src="/new_electric.png" alt="After redesign: premium electrician website" fill className="object-cover" priority />
+          <span className="absolute left-3 top-3 rounded-full bg-accent/80 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white">After</span>
+        </div>
       </div>
 
-      <div className={`rounded-xl border p-3 ${before ? 'border-[#6c4f3b]/40 bg-[#2a2019]' : 'border-white/10 bg-[#191727]'}`}>
-        <div className="flex items-center justify-between">
-          <div className={`h-3 rounded ${before ? 'w-28 bg-[#d58c57]/60' : 'w-24 bg-white/60'}`} />
-          <div className="flex gap-2">
-            <div className={`h-2 rounded ${before ? 'w-9 bg-[#f3c095]/60' : 'w-10 bg-white/30'}`} />
-            <div className={`h-2 rounded ${before ? 'w-9 bg-[#f3c095]/40' : 'w-10 bg-accent/55'}`} />
+      <div className="group relative hidden overflow-hidden rounded-2xl border border-white/10 bg-black/30 md:block md:aspect-[16/9]">
+        <div className="absolute inset-0">
+          <Image src="/old_electric.png" alt="Before redesign: outdated electrician website" fill className="object-cover" priority />
+        </div>
+
+        <div className="absolute inset-y-0 right-0 w-1/2 overflow-hidden transition-all duration-700 ease-out group-hover:w-[68%]">
+          <div className="relative h-full w-full min-w-[840px]">
+            <Image src="/new_electric.png" alt="After redesign: premium electrician website" fill className="object-cover" priority />
           </div>
         </div>
 
-        <div className="mt-4 grid gap-3 md:grid-cols-[1.15fr_.85fr]">
-          <div className={`rounded-lg p-3 ${before ? 'bg-[#3a2d24]' : 'bg-[#25213b]'}`}>
-            <div className={`h-3 w-2/3 rounded ${before ? 'bg-[#e8b389]/70' : 'bg-white/75'}`} />
-            <div className={`mt-2 h-3 w-3/4 rounded ${before ? 'bg-[#d08a5b]/50' : 'bg-white/40'}`} />
-            <div className={`mt-3 h-20 rounded ${before ? 'bg-[#4d3b31]' : 'bg-gradient-to-br from-accent/45 to-white/10'}`} />
-            <div className={`mt-3 h-8 w-36 rounded ${before ? 'bg-[#d58c57]/50' : 'bg-accent/65'}`} />
-          </div>
-          <div className={`space-y-3 rounded-lg p-3 ${before ? 'bg-[#342821]' : 'bg-[#201d33]'}`}>
-            {[0, 1, 2].map((i) => (
-              <div key={i} className={`h-10 rounded ${before ? 'bg-[#4b392e]' : 'bg-white/10'}`} />
-            ))}
-          </div>
-        </div>
+        <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/40 transition-all duration-700 ease-out group-hover:left-[32%]" />
+
+        <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/90">Before</span>
+        <span className="absolute right-4 top-4 rounded-full bg-accent/85 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white">After</span>
       </div>
     </div>
   );
@@ -64,7 +61,7 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="grid items-end gap-8 lg:grid-cols-[.7fr_1.3fr]">
+        <div className="mb-10 grid items-end gap-8 lg:grid-cols-[.7fr_1.3fr]">
           <div className="space-y-5">
             <p className="caption">Websites reimagined</p>
             <h1 className="text-5xl font-semibold leading-[1.03] text-text md:text-7xl">From forgettable to premium.</h1>
@@ -73,25 +70,10 @@ export default function Home() {
               Get a free audit
             </Link>
           </div>
-
-          <div className="panel animate-fade p-4 md:p-5">
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#181514] p-3 md:p-4">
-              <div className="grid gap-4 md:grid-cols-2">
-                <div>
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-[#d5a17d]">Before — local plumbing company</p>
-                  <BrowserFrame before />
-                </div>
-                <div>
-                  <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-accent">After — premium service brand</p>
-                  <BrowserFrame />
-                </div>
-              </div>
-
-              <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-white/30 to-transparent md:block" />
-              <div className="pointer-events-none absolute inset-y-3 left-0 w-[18%] animate-reveal rounded-r-2xl border-r border-accent/45 bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
-            </div>
-          </div>
+          <p className="max-w-md text-sm leading-relaxed text-white/65 lg:ml-auto">A real transformation preview: an outdated electrician site rebuilt into a premium, conversion-focused experience.</p>
         </div>
+
+        <HeroComparison />
       </section>
 
       <section className="section pt-8">
