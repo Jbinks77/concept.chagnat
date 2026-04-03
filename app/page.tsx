@@ -16,35 +16,24 @@ const cases: CaseItem[] = [
 const process = ['Deep teardown', 'Visual repositioning', 'Conversion rebuild', 'Polish + launch'];
 const portfolio = ['Attorney landing', 'Dental clinic', 'Real estate', 'Luxury interiors', 'SaaS homepage', 'Private medical'];
 
+function ComparisonCard({ label, src }: { label: 'Before' | 'After'; src: string }) {
+  return (
+    <article className="relative h-[280px] overflow-hidden rounded-2xl border border-white/10 sm:h-[360px] md:h-full">
+      <Image src={src} alt={`${label} electrician website redesign`} fill className="object-cover" priority />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+      <span className="absolute left-4 top-4 rounded-full border border-white/25 bg-black/45 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white">
+        {label}
+      </span>
+    </article>
+  );
+}
+
 function HeroComparison() {
   return (
-    <div className="hero-compare-card panel mx-auto w-full max-w-[1200px] p-3 md:p-4">
-      <div className="md:hidden space-y-3">
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
-          <Image src="/old_electric.png" alt="Before redesign: outdated electrician website" fill className="object-cover" priority />
-          <span className="absolute left-3 top-3 rounded-full bg-black/55 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/90">Before</span>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl border border-white/10 aspect-[16/10]">
-          <Image src="/new_electric.png" alt="After redesign: premium electrician website" fill className="object-cover" priority />
-          <span className="absolute left-3 top-3 rounded-full bg-accent/80 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white">After</span>
-        </div>
-      </div>
-
-      <div className="group relative hidden overflow-hidden rounded-2xl border border-white/10 bg-black/30 md:block md:aspect-[16/9]">
-        <div className="absolute inset-0">
-          <Image src="/old_electric.png" alt="Before redesign: outdated electrician website" fill className="object-cover" priority />
-        </div>
-
-        <div className="absolute inset-y-0 right-0 w-1/2 overflow-hidden transition-all duration-700 ease-out group-hover:w-[68%]">
-          <div className="relative h-full w-full min-w-[840px]">
-            <Image src="/new_electric.png" alt="After redesign: premium electrician website" fill className="object-cover" priority />
-          </div>
-        </div>
-
-        <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-white/40 transition-all duration-700 ease-out group-hover:left-[32%]" />
-
-        <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/90">Before</span>
-        <span className="absolute right-4 top-4 rounded-full bg-accent/85 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white">After</span>
+    <div className="hero-compare-card panel mx-auto w-full max-w-[1240px] p-3 md:p-4">
+      <div className="grid gap-3 md:h-[700px] md:grid-cols-2">
+        <ComparisonCard label="Before" src="/portfolio/old_electric.png" />
+        <ComparisonCard label="After" src="/portfolio/new_electric.png" />
       </div>
     </div>
   );
