@@ -1,45 +1,39 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
-  content: [
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}'
-  ],
+  content: ['./app/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        background: '#0b0b0b',
-        surface: '#121212',
-        accent: '#4cc9ff',
-        soft: '#e9eef2'
+        bg: '#11100f',
+        panel: '#1b1918',
+        text: '#f2efe9',
+        accent: '#8f82ff',
+        muted: '#b6b0a7'
       },
       boxShadow: {
-        glow: '0 0 0 1px rgba(76,201,255,.25), 0 30px 80px rgba(76,201,255,.15)',
-        panel: '0 30px 100px rgba(0,0,0,.45)'
-      },
-      backgroundImage: {
-        'spotlight': 'radial-gradient(circle at 50% 0%, rgba(76,201,255,.18), transparent 45%)',
-        'vignette': 'radial-gradient(circle at 50% 20%, transparent 35%, rgba(0,0,0,.6) 100%)'
+        luxe: '0 28px 90px rgba(0,0,0,.45)',
+        edge: '0 0 0 1px rgba(255,255,255,.08), 0 14px 50px rgba(0,0,0,.35)'
       },
       keyframes: {
-        'reveal-sweep': {
-          '0%, 12%': { width: '14%' },
-          '50%': { width: '72%' },
-          '88%, 100%': { width: '14%' }
+        reveal: {
+          '0%, 10%': { width: '18%' },
+          '52%': { width: '74%' },
+          '90%, 100%': { width: '18%' }
         },
-        float: {
+        floaty: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' }
+          '50%': { transform: 'translateY(-8px)' }
         },
-        'fade-up': {
-          from: { opacity: '0', transform: 'translateY(20px)' },
+        fade: {
+          from: { opacity: '0', transform: 'translateY(18px)' },
           to: { opacity: '1', transform: 'translateY(0)' }
         }
       },
       animation: {
-        'reveal-sweep': 'reveal-sweep 7.5s ease-in-out infinite',
-        float: 'float 6s ease-in-out infinite',
-        'fade-up': 'fade-up .8s ease forwards'
+        reveal: 'reveal 8s ease-in-out infinite',
+        floaty: 'floaty 7s ease-in-out infinite',
+        fade: 'fade .9s ease forwards'
       }
     }
   },
